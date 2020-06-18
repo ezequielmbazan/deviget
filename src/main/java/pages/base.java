@@ -3,7 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-
+//This is the base page that contains some generic methods
 public class base {
 
     protected WebDriver driver;
@@ -29,5 +29,8 @@ public class base {
         driver.findElement(elementBy).sendKeys(text);
     }
 
+    public String getAttributeValue(By elementBy, String attribute){
+        return driver.findElement(elementBy).getAttribute(attribute);
+    }
 
 }
