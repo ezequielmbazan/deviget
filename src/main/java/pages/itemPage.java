@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import sun.awt.AWTIcon32_security_icon_bw16_png;
 
 public class itemPage extends base {
 
@@ -11,17 +12,18 @@ public class itemPage extends base {
         super(driver);
     }
 
-
+    //Locators
     By modalCloseButton2 = By.className("next-dialog-body");
 
-    //Locators
 
 
-    public int verifyStock(){
 
-        WebElement element = driver.findElement(By.xpath("//div[@class='product-info']"));
-        String q = element.getText();
-        return 1;
+    public void verifyStock(){
+
+        WebElement element = driver.findElement(By.xpath("//div[@class='product-quantity clearfix']/div[2]/div[2]"));
+        String q = element.getText().replaceAll("[^\\.0123456789]","");
+        int quantity = Integer.parseInt(q);
+        Assert.assertTrue(quantity>0);
     }
 
     public void closeModal()

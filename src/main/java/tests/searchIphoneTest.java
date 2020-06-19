@@ -9,7 +9,7 @@ import pages.resultsPage;
 
 import java.lang.annotation.Target;
 
-public class search extends baseTest {
+public class searchIphoneTest extends baseTest {
 
 
 
@@ -56,11 +56,12 @@ public class search extends baseTest {
         itemPage ip = rp.gotoSecondItem();
         Thread.sleep(8000);
 
-        //ip.closeModal();
+        ip.closeModal();
 
 
         js.executeScript("window.scrollTo(0,300)");
-        
+
+        //verify stock > 0
         ip.verifyStock();
 
 

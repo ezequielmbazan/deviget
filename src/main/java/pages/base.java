@@ -34,8 +34,19 @@ public abstract class base {
     }
 
     public void closeModal(By elementBy){
-        if(driver.findElement(elementBy).isDisplayed()) {
+        if(isElementPresent(elementBy)) {
             click(elementBy);
+        }
+    }
+
+
+    public boolean isElementPresent(By elementBy) {
+        try {
+            driver.findElement(elementBy);
+            return true;
+        }
+        catch (org.openqa.selenium.NoSuchElementException e) {
+            return false;
         }
     }
 
