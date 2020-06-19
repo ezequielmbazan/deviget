@@ -23,7 +23,7 @@ public class itemPage extends base {
         WebElement element = driver.findElement(By.xpath("//div[@class='product-quantity clearfix']/div[2]/div[2]"));
         String q = element.getText().replaceAll("[^\\.0123456789]","");
         int quantity = Integer.parseInt(q);
-        Assert.assertTrue(quantity>0);
+        Assert.assertTrue(quantity>0,"Stock is available!");
     }
 
     public void closeModal()
