@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 //This is the base page that contains some generic methods
-public class base {
+public abstract class base {
 
     protected WebDriver driver;
 
@@ -31,6 +31,12 @@ public class base {
 
     public String getAttributeValue(By elementBy, String attribute){
         return driver.findElement(elementBy).getAttribute(attribute);
+    }
+
+    public void closeModal(By elementBy){
+        if(driver.findElement(elementBy).isDisplayed()) {
+            click(elementBy);
+        }
     }
 
 }

@@ -4,10 +4,15 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.Test;
 
 import pages.homePage;
+import pages.itemPage;
+import pages.resultsPage;
 
 import java.lang.annotation.Target;
 
 public class search extends baseTest {
+
+
+
 
     @Test
     public void searchAndVerification() throws InterruptedException{
@@ -22,10 +27,12 @@ public class search extends baseTest {
         hp.WriteOnSearchBox("iphone");
 
         //click on search button
-        hp.clickSearch();
+        resultsPage rp = hp.clickSearch();
 
+
+        Thread.sleep(5000);
         //close modal
-        hp.closeModal();
+        rp.closeModal();
 
         //scroll to bottom
         JavascriptExecutor js = (JavascriptExecutor)driver;
@@ -33,13 +40,29 @@ public class search extends baseTest {
 
 
         //select page 2 of results
-        hp.clickPage("2");
+        rp.clickPage("2");
 
         //scroll to bottom
         js.executeScript("window.scrollTo(0,12800)");
 
         //check if this is second page
-        hp.verifySecondPage();
+        rp. verifySecondPage();
+
+        //scroll to top
+        js.executeScript("window.scrollTo(0,0)");
+        Thread.sleep(15000);
+
+        //verify if second ad is iphone
+        itemPage ip = rp.gotoSecondItem();
+        Thread.sleep(8000);
+
+        //ip.closeModal();
+
+
+        js.executeScript("window.scrollTo(0,300)");
+        
+        ip.verifyStock();
+
 
     }
 

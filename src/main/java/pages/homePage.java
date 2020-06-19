@@ -9,6 +9,7 @@ import java.awt.*;
 public class homePage extends base {
 
     public homePage (WebDriver driver) {
+
         super(driver);
     }
 
@@ -20,10 +21,6 @@ public class homePage extends base {
     By title = By.className("logo-base");
     By searchField = By.name("SearchText");
     By searchButton = By.className("search-in-aliexpress");
-    By previousButton = By.xpath("//button[@type='button'][0]");//By.xpath("//button[contains(text(),'Previous page, current page 1')]");
-    By buttonPage2 = By.xpath("//button[@type='button'][2]");
-    By modalCloseButton = By.className("next-dialog-close");
-
 
 
     public homePage goToHomePage(){
@@ -37,30 +34,9 @@ public class homePage extends base {
 
     }
 
-    public void clickSearch(){
+    public resultsPage clickSearch(){
         click(searchButton);
+        return new resultsPage(driver);
     }
-
-    public void closeModal(){
-        click(modalCloseButton);
-    }
-
-    public homePage verifySecondPage(){
-        String page;
-        page = getAttributeValue(buttonPage2,"class");
-
-        Assert.assertEquals(true, page.contains("next-current"));
-
-        return this;
-    }
-
-    public void clickPage(String page){
-        if (page.equals("2")) {
-            click(buttonPage2);
-        }
-
-    }
-
-
 
 }
